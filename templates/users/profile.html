@@ -2,11 +2,63 @@
 
 {% block body %}
 
-    <div  style="position: relative; left: 400px;  width: 80%; border: 1px solid red">
+    <div style="position: relative; left: 400px;  width: 65%; margin-top: 50px">
+        <div  class="d-flex align-items-center" style=" height: 200px ;  ">
+            <div class="d-inline-block">
+                <img
+                        style="height: 200px; height: 200px; border-radius: 50%; "
+                        src="data:image/png;base64,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">
+            </div>
+            <div class="d-inline-block" style="padding-left: 100px">
+                <p>
+                    <spna style="padding-right: 50px">UserId</spna>
+                    <button> Edit Profile</button>
+                </p>
+                <p><span>12 posts</span></p>
+                <p>{{ user.nickname}}</p>
 
- <h1>profile.html</h1>
+            </div>
+        </div>
+        <div>
 
 
+            <div class="tabs">
+                <div class="tab-2">
+                    <label for="tab2-1">POSTS</label>
+                    <input id="tab2-1" name="tabs-two" type="radio" checked="checked">
+                    <div id="feed_list"
+                         style="width: 100%; min-width: 1000px; display: flex; align-items: center;justify-content: center">
+                        <div style="display: flex; flex-direction: row; flex-wrap: wrap; width: 1000px; justify-content: center">
+                            {#                            {% for feed in feed_list %}#}
+                            <div style="width: 300px;height: 300px; margin: 10px 5px 0px 5px;">
+
+                                <div><img style="width: 300px;height: 300px; object-fit: cover"
+                                          src="https://i.pinimg.com/564x/63/a7/85/63a785de6d4e6e29ea3b4e050832dff6--the-clouds-the-moon.jpg">
+                                </div>
+                            </div>
+                            {#                            {% endfor %}#}
+
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-2">
+                    <label for="tab2-2">LIKES</label>
+                    <input id="tab2-2" name="tabs-two" type="radio">
+                    <div>
+                        <h4>Tab Two</h4>
+
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+
+        <!-- Bootstrap core JavaScript
+            ================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+    </div>
     </div>
 
 
