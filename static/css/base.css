@@ -26,18 +26,23 @@ nav {
 .post_section {
     position: relative;
     left: 40%;
-padding-left: 100px;
+    padding-left: 100px;
+    margin-top: 30px;
 }
-.post_card{
-    margin: 30px;
+
+.post_card {
+
     width: 500px;
     height: 600px;
 }
 
 /*rigth body*/
 .right_body {
+
     position: relative;
-    left: 20%;
+    margin: 30px;
+    width: 400px;
+    left: 40%;
     border: 1px solid blueviolet;
 }
 
