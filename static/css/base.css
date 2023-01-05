@@ -1,0 +1,44 @@
+
+.symbol_text {
+    font-family: 'Dancing Script', cursive;
+}
+
+nav {
+    borer: 1px solid red;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 5px;
+    position: fixed;
+
+
+}
+
+.navbar-nav {
+    padding: 30px;
+    font-weight: bold;
+    font-size: 22px;
+    margin-left: 50px
+}
+
+/*post section*/
+.post_section {
+    position: relative;
+    left: 40%;
+padding-left: 100px;
+}
+.post_card{
+    margin: 30px;
+    width: 500px;
+    height: 600px;
+}
+
+/*rigth body*/
+.right_body {
+    position: relative;
+    left: 20%;
+    border: 1px solid blueviolet;
+}
+
+
