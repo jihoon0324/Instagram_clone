@@ -59,66 +59,98 @@
                             class="fa-regular fa-moon"></i></span></li>
 
                     <li><a class="dropdown-item" href="#">Liked <i class="fa-regular fa-heart"></i></a></li>
-                    <li><a class="dropdown-item" href="#">Switch accounts</a></li>
+                    <li id="switch_account_nav"><span class="dropdown-item">Switch accounts</span>
+
+                    </li>
+
                 </ul>
             </li>
         </ul>
+                   <!-- switch account  -->
+
     </nav>
 
 
 
     {% block body %}
     {% endblock %}
-    <!--first modal  -->
-    <div id="first_modal" class="modal_overlay">
-        <div class="modal_window">
-            <div class="modal_title">
-                <div class="modal_title_side"></div>
-                <div> 새 게시물</div>
-                <div class="modal_title_side">
-                <span id="close_modal" class="material-icons-outlined">
+
+</div>
+</div>
+<div class="test">
+    test
+</div>
+<div id="switch_modal" class="switch_modal_overlay">
+    <div class="switch_modal_window">
+        <div class="modal_title">
+
+
+            <ul>
+                <li>A_user</li>
+                <li> B_user</li>
+                <li>C_user</li>
+
+            </ul>
+            <span id="close_modal" class="material-icons-outlined">
                     close
                 </span>
-                </div>
-            </div>
-            <div class="modal_image_upload">
-
-            </div>
         </div>
     </div>
 
 
-    <!--second modal  -->
-    <div id="second_modal" class="modal_overlay">
-        <div class="modal_window">
-            <div class="modal_title">
-                <div class="modal_title_side"></div>
-                <div> 새 게시물</div>
-                <div class="modal_title_side">
+</div>
+
+
+<!--Create post first modal  -->
+<div id="first_modal" class="modal_overlay">
+    <div class="modal_window">
+        <div class="modal_title">
+            <div class="modal_title_side"></div>
+            <div> 새 게시물</div>
+            <div class="modal_title_side">
                 <span id="close_modal" class="material-icons-outlined">
                     close
                 </span>
-                </div>
             </div>
+        </div>
+        <div class="modal_image_upload">
 
-            <div style="display: flex; flex-direction: row; border-top :solid 1px gray">
-                <div class="modal_image_upload"
-                     style="width:500px; height: 540px; background: green; margin-top: 20px ">
+        </div>
+    </div>
+</div>
 
-                </div>
-                <div style="border-left:solid 1px gray">
-                    <div>
+
+<!--Create post second modal  -->
+<div id="second_modal" class="modal_overlay">
+    <div class="modal_window">
+        <div class="modal_title">
+            <div class="modal_title_side"></div>
+            <div> 새 게시물</div>
+            <div class="modal_title_side">
+                <span id="close_modal" class="material-icons-outlined">
+                    close
+                </span>
+            </div>
+        </div>
+
+        <div style="display: flex; flex-direction: row; border-top :solid 1px gray">
+            <div class="modal_image_upload"
+                 style="width:500px; height: 540px; background: green; margin-top: 20px ">
+
+            </div>
+            <div style="border-left:solid 1px gray">
+                <div>
                     <textarea id="second_modal_textarea" class="form-control" style="width:270px; height: 400px;"
                               id="exampleFormControlTextarea1"
                               rows="5"></textarea>
-                    </div>
-                    <button id="post_create_button" class="btn btn-primary" style="width: 100%">
-                        공유하기
-                    </button>
                 </div>
+                <button id="post_create_button" class="btn btn-primary" style="width: 100%">
+                    공유하기
+                </button>
             </div>
         </div>
     </div>
+</div>
 
 {{ user.nickname }}
 </div>
@@ -146,111 +178,111 @@
             overflow: 'hidden'
         })
     })
-    $('#close_modal ').click(function (){
-         $('#first_modal ,second_modal').css({
+    $('#close_modal ').click(function () {
+        $('#first_modal ,second_modal').css({
             display: 'none',
         })
     })
 
 
     $('.modal_image_upload')
-    .on("dragover", dragOver)
-    .on("dragleave", dragOver)
-    .on("drop", uploadFiles)
+        .on("dragover", dragOver)
+        .on("dragleave", dragOver)
+        .on("drop", uploadFiles)
 
-function dragOver(e) {
-    e.stopPropagation()
-    e.preventDefault()
-    if (e.type == "dragover") {
-        $(e.target).css({
-            "background-color": "black",
-            "outline-offset": "-10px"
-        })
+    function dragOver(e) {
+        e.stopPropagation()
+        e.preventDefault()
+        if (e.type == "dragover") {
+            $(e.target).css({
+                "background-color": "black",
+                "outline-offset": "-10px"
+            })
 
-    } else {
-        $(e.target).css({
-            "background-color": "gray",
-            "outline-offset": "-10px"
-        })
-    }
-
-
-}
-    function uploadFiles(e) {
-    e.stopPropagation();
-    e.preventDefault();
-
-
-    e.dataTransfer = e.originalEvent.dataTransfer; //2
-    files = e.target.files || e.dataTransfer.files;
-
-    if (files.length > 1) {
-        alert(' 하나 ' +
-            '' +
-            '만 올려라.');
-        return;
-    }
-
-    if (files[0].type.match(/image.*/)) {
-        $('#first_modal').css({
-            display: 'none',
-        })
-
-        $('#second_modal').css({
-            display: 'flex',
-        })
-
-        $('.modal_image_upload').css({
-            "background-image": "url(" + window.URL.createObjectURL(files[0]) + ")",
-            "outline": "none",
-            "background-size": "100% ",
-            "background-repeat": "no-repeat",
-            "background-position": "center"
-        });
-    } else {
-        alert('이미지가 아닙니다.');
-        return;
-    }
-
-}
-
-$('#post_create_button').click(function () {
-
-
-    let file = files[0]
-    let image = files[0].name;
-    let content = $('#second_modal_textarea').val();
-
-    let fd = new FormData();
-
-    fd.append("file", file)
-    fd.append("image", image)
-    fd.append("content", content)
-     console.log("before")
-    $.ajax({
-        url: "/upload",
-        data: fd,
-        method: "POST",
-        {##}
-        processData: false,
-        contentType: false,
-
-        success: function (data) {
-            console.log("compete upload")
-
-        },
-        error: function (request, status, error) {
-            console.log("error")
-
-        },
-        complete: function () {
-            console.log(" upload  Process complete ")
-            location.replace("")
-
+        } else {
+            $(e.target).css({
+                "background-color": "gray",
+                "outline-offset": "-10px"
+            })
         }
-    })
-})
 
+
+    }
+
+    function uploadFiles(e) {
+        e.stopPropagation();
+        e.preventDefault();
+
+
+        e.dataTransfer = e.originalEvent.dataTransfer; //2
+        files = e.target.files || e.dataTransfer.files;
+
+        if (files.length > 1) {
+            alert(' 하나 ' +
+                '' +
+                '만 올려라.');
+            return;
+        }
+
+        if (files[0].type.match(/image.*/)) {
+            $('#first_modal').css({
+                display: 'none',
+            })
+
+            $('#second_modal').css({
+                display: 'flex',
+            })
+
+            $('.modal_image_upload').css({
+                "background-image": "url(" + window.URL.createObjectURL(files[0]) + ")",
+                "outline": "none",
+                "background-size": "100% ",
+                "background-repeat": "no-repeat",
+                "background-position": "center"
+            });
+        } else {
+            alert('이미지가 아닙니다.');
+            return;
+        }
+
+    }
+
+    $('#post_create_button').click(function () {
+
+
+        let file = files[0]
+        let image = files[0].name;
+        let content = $('#second_modal_textarea').val();
+
+        let fd = new FormData();
+
+        fd.append("file", file)
+        fd.append("image", image)
+        fd.append("content", content)
+        console.log("before")
+        $.ajax({
+            url: "/upload",
+            data: fd,
+            method: "POST",
+            {##}
+            processData: false,
+            contentType: false,
+
+            success: function (data) {
+                console.log("compete upload")
+
+            },
+            error: function (request, status, error) {
+                console.log("error")
+
+            },
+            complete: function () {
+                console.log(" upload  Process complete ")
+                location.replace("")
+
+            }
+        })
+    })
 
 
 </script>
