@@ -236,7 +236,7 @@ $('#post_create_button').click(function () {
         contentType: false,
 
         success: function (data) {
-            console.log("성공")
+            console.log("compete upload")
 
         },
         error: function (request, status, error) {
@@ -244,8 +244,8 @@ $('#post_create_button').click(function () {
 
         },
         complete: function () {
-            console.log(" 완료ㅏ ")
-            {#location.replace("")#}
+            console.log(" upload  Process complete ")
+            location.replace("")
 
         }
     })
