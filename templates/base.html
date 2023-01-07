@@ -59,14 +59,14 @@
                             class="fa-regular fa-moon"></i></span></li>
 
                     <li><a class="dropdown-item" href="#">Liked <i class="fa-regular fa-heart"></i></a></li>
-                    <li id="switch_account_nav"><span class="dropdown-item">Switch accounts</span>
+                    <li class="switch_account_nav"><span class="dropdown-item">Switch accounts</span>
 
                     </li>
 
                 </ul>
             </li>
         </ul>
-                   <!-- switch account  -->
+
 
     </nav>
 
@@ -77,22 +77,28 @@
 
 </div>
 </div>
-<div class="test">
-    test
-</div>
-<div id="switch_modal" class="switch_modal_overlay">
+<!-- switch modal-->
+<div id="switch_modal_overlay" >
     <div class="switch_modal_window">
         <div class="modal_title">
 
 
             <ul>
-                <li>A_user</li>
-                <li> B_user</li>
-                <li>C_user</li>
+
+
+                <p>
+                    <label><input type="radio" name="account_user" value="A_nickname">A_nickname</label>
+                    <label><input type="radio" name="account_user" value="B_nickname">B_nickname</label>
+                      <label><input type="radio" name="account_user" value="C_nickname">C_nickname</label>
+                </p>
+                <p><input type="button" value="Change"> </p>
+
+
+
 
             </ul>
-            <span id="close_modal" class="material-icons-outlined">
-                    close
+            <span id="switch_close_modal" class="material-icons-outlined">
+                  <i class="fa-regular fa-rectangle-xmark"></i>
                 </span>
         </div>
     </div>
@@ -109,7 +115,7 @@
             <div> 새 게시물</div>
             <div class="modal_title_side">
                 <span id="close_modal" class="material-icons-outlined">
-                    close
+                  <i class="fa-regular fa-rectangle-xmark"></i>
                 </span>
             </div>
         </div>
@@ -127,8 +133,8 @@
             <div class="modal_title_side"></div>
             <div> 새 게시물</div>
             <div class="modal_title_side">
-                <span id="close_modal" class="material-icons-outlined">
-                    close
+                <span id="create_second_close_modal" class="material-icons-outlined">
+                   <i class="fa-regular fa-rectangle-xmark"></i>
                 </span>
             </div>
         </div>
@@ -152,9 +158,50 @@
     </div>
 </div>
 
-{{ user.nickname }}
+
 </div>
 <script>
+    <!--switch account -->
+
+        $("input[type='button']").click(function(){
+            var radioValue = $("input[name='account_user']:checked").val();
+
+            $.ajax({
+                url:"/users/switchAccount",
+                data:{
+                    nickname:radioValue,
+                },
+                method:"POST",
+
+                success: function(data){
+                    console.log("성공")
+                      location.replace("")
+                },
+                error:function (request, status,error){
+                console.log("error")
+                },
+                 complete: function (){
+                console.log(" 완료ㅏ ")
+                }
+            })
+
+        });
+
+   $('.switch_account_nav').click(function () {
+        $('#switch_modal_overlay').css({
+            display: 'inline-block',
+        })
+    })
+
+    $('#switch_close_modal').click(function () {
+        $('#switch_modal_overlay').css({
+            display: 'none',
+        })
+    })
+
+
+
+    <!-- switch appeerance -->
     $('#switch_appearance').click(function () {
         if ($(document.body).hasClass("dark_mode")) {
             $(document.body).removeClass(("dark_mode")),
@@ -178,7 +225,7 @@
             overflow: 'hidden'
         })
     })
-    $('#close_modal ').click(function () {
+    $('#close_modal ,#create_second_close_modal ').click(function () {
         $('#first_modal ,second_modal').css({
             display: 'none',
         })
@@ -283,6 +330,8 @@
             }
         })
     })
+
+
 
 
 </script>

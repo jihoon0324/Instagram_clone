@@ -18,9 +18,10 @@
                 <img style="height: 400px; width: 100%" src="{% get_media_prefix %}{{ post.image }}" alt="">
             </div>
             <div style="border: 1px solid burlywood; ">
-                <div>
-                    하트
-                </div>
+                <button class="like_button" id="like_button_{{ post.id }}">
+                   <i class="fa-regular fa-heart" ></i>
+                    <i class="fa-solid fa-heart" ></i>
+                </button>
 
                 <div>
                     라이크 몇명이 좋아한다 <br>내 코멘트 리플
@@ -55,15 +56,20 @@
                     </div>
                     <div style="display: inline-block; margin-left: 10px">
                         <div>
-                            username
+                            {{ user.nickname }}
                         </div>
                         <div>
-                            user fullname
+                            {{ user.name}}
                         </div>
                     </div>
                 </div>
                 <div class="d-flex align-items-center" style="display: inline-block">
-                    switch
+                    <div class="switch_account_nav">
+
+                        switch
+
+                    </div>
+
                 </div>
 
             </div>
@@ -173,7 +179,13 @@
 
         </section>
     </div>
+<script>
 
+$('.like_button').click(function (){
+    alert(this.id)
+})
+
+</script>
 
 
 {% endblock %}
