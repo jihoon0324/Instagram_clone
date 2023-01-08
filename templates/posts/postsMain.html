@@ -33,11 +33,14 @@
                             {% for comment in post.comment_post %}
                                 <div id="comment_{{ comment.id }}">
                                     <b> {{ comment.author.nickname }} </b>
-                                    {{ comment.commentContents }} {% if user.id == comment.author.id %}
-                                    <div id="removeComment_{{ comment.id }}" class="delete_comment">
-                                        <i class="fa-regular fa-trash-can"></i>
-                                    </div>
-                                {% endif %}
+                                    {{ comment.commentContents }}
+                                    {% if user.id == comment.author.id %}
+                                        <div id="removeComment_{{ comment.id }}" class="delete_comment"
+                                             style="display: inline-block;  float: right ">
+                                            <i class="fa-regular fa-trash-can"></i>
+                                        </div>
+
+                                    {% endif %}
                                 </div>
                             {% endfor %}
                         </div>
@@ -226,6 +229,7 @@
         $(".upload_reply").click(function (e) {
 
             let postId = (this.id).split("_")
+            let comment_id = "comment_" + postId[1]
             comment_content = $('#comment_' + postId[1]).val()
 
             $.ajax({
@@ -238,9 +242,31 @@
 
                 // 일 부분만 리로딩 하기
                 success: function (data) {
-                    console.log("성공")
-                    $("#reply_list_" + feed_id).append("<div><span><b>" + reply_id + "</b>" + reply_content + "</span></div>")
-                    {#$("#" + reply_id).val('')#}
+                    console.log(postId[1])
+                    console.log("success")
+                    $("#comment_list_" + postId[1]).append("<div id=" + comment_id + "> " +
+                        "<b>" + data.user +
+                        "<b>"
+                        + data.comment_content +
+                        "<div id=removeComment_" + postId + "class=delete_comment" + postId + "  style='display: inline-block;  float: right'  >  <i class=" + " 'fa-regular fa-trash-can'</i></div></div>"
+                    )
+
+                    $("#" + comment_id).val('')
+
+
+                    {#<div id="comment_{{ comment.id }}">#}
+                    {#    <b> {{ comment.author.nickname }} </b>#}
+                    {#    {{ comment.commentContents}}#}
+                    {#          #}
+                    {#                <div id="removeComment_{{ comment.id }}" class="delete_comment">#}
+                    {#                    <i class="fa-regular fa-trash-can"></i>#}
+                    {#                </div>#}
+                    {#               #}
+                    {#         #}
+                    {#</div>#}
+
+
+
 
 
                     {#$('.comment_reply').html(data )#}
@@ -265,19 +291,17 @@
             $.ajax({
                 url: "/commentDelete",
                 data: {
-
                     commentId: commentId[1]
                 },
                 method: "POST",
 
                 // 일 부분만 리로딩 하기
                 success: function (data) {
-                    console.log("성공")
-
+                    console.log(commentId[1])
+                    $("#comment_" + commentId[1]).remove()
                 },
                 error: function (request, status, error) {
                     console.log("error")
-
                 },
                 complete: function () {
                     console.log(" 완료ㅏ ")
