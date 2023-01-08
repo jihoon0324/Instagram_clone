@@ -3,45 +3,56 @@
 {% block body %}
 
     <!-- Posts section -->
-{% load static %}
+    {% load static %}
     <div class="col-5  ">
- <section class="post_section">
+        <section class="post_section">
 
-     {% for post in posts %}
-        <div class="post_card">
-            <div style="border: 1px solid burlywood; height: 50px">
-                <img  src="data:image/jpeg;base64,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"
-                     style="height: 40px; width: 40px;  border-radius: 50%;">
-                <b>{{ post.author.nickname }}</b>
-            </div>
-            <div style="border: 1px solid burlywood; height:400px">
-                <img style="height: 400px; width: 100%" src="{% get_media_prefix %}{{ post.image }}" alt="">
-            </div>
-            <div style="border: 1px solid burlywood; ">
-                <button class="like_button" id="like_button_{{ post.id }}">
-                   <i class="fa-regular fa-heart" ></i>
-                    <i class="fa-solid fa-heart" ></i>
-                </button>
+            {% for post in posts %}
 
-                <div>
-                    라이크 몇명이 좋아한다 <br>내 코멘트 리플
+                <div class="post_card">
+                    <div style="border: 1px solid burlywood; height: 50px">
+                        <img src="data:image/jpeg;base64,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"
+                             style="height: 40px; width: 40px;  border-radius: 50%;">
+                        <b>{{ post.author.nickname }}</b>
+                    </div>
+                    <div style="border: 1px solid burlywood; height:400px">
+                        <img style="height: 400px; width: 100%" src="{% get_media_prefix %}{{ post.image }}" alt="">
+                    </div>
+                    <div style="border: 1px solid burlywood; ">
+
+                        <button class="like_button" id="likeButton_{{ post.id }}">
+                            {% if user.id in post.image_likes %}
+                                <i id="likehart" class="fa-solid fa-heart"></i>
+                            {% else %}
+
+                                <i id="unlikehart" class="fa-regular fa-heart"></i>
+                            {% endif %}
+                        </button>
+
+                        <div class="comment_reply" id="comment_list_{{ post.id }}">
+                            {% for comment in post.comment_post %}
+                                <div id="comment_{{ comment.id }}">
+                                    <b> {{ comment.author.nickname }} </b>
+                                    {{ comment.commentContents }} {% if user.id == comment.author.id %}
+                                    <div id="removeComment_{{ comment.id }}" class="delete_comment">
+                                        <i class="fa-regular fa-trash-can"></i>
+                                    </div>
+                                {% endif %}
+                                </div>
+                            {% endfor %}
+                        </div>
+                        <div>
+                            <input id="comment_{{ post.id }}" type="text" style="width: 85%; height: 35px" type="text"
+                                   placeholder=" Add a comment">
+                            <button id="postCreate_{{ post.id }}" class="upload_reply">post</button>
+                        </div>
+                    </div>
+
                 </div>
-                <div>
-                    다른유저 아이디 : 코맨트 내용
-                </div>
-                <div>
-                    <input style="width: 85%; height: 35px" type="text" placeholder=" Add a comment">
-                    <button>post</button>
-                </div>
-            </div>
-
-        </div>
-     {% endfor %}
+            {% endfor %}
 
 
-
-
-    </section>
+        </section>
 
 
     </div>
@@ -59,7 +70,7 @@
                             {{ user.nickname }}
                         </div>
                         <div>
-                            {{ user.name}}
+                            {{ user.name }}
                         </div>
                     </div>
                 </div>
@@ -95,7 +106,7 @@
                     </div>
 
                 </div>
-                   <div class="d-flex justify-content-between ">
+                <div class="d-flex justify-content-between ">
                     <div class="d-flex align-items-center" style="display: inline-block">
                         <div style="display: inline-block">
                             <img style="width: 30px; height: 30px ;  border-radius: 50%;"
@@ -115,7 +126,7 @@
                     </div>
 
                 </div>
-                   <div class="d-flex justify-content-between ">
+                <div class="d-flex justify-content-between ">
                     <div class="d-flex align-items-center" style="display: inline-block">
                         <div style="display: inline-block">
                             <img style="width: 30px; height: 30px ;  border-radius: 50%;"
@@ -135,7 +146,7 @@
                     </div>
 
                 </div>
-                   <div class="d-flex justify-content-between ">
+                <div class="d-flex justify-content-between ">
                     <div class="d-flex align-items-center" style="display: inline-block">
                         <div style="display: inline-block">
                             <img style="width: 30px; height: 30px ;  border-radius: 50%;"
@@ -155,7 +166,7 @@
                     </div>
 
                 </div>
-                   <div class="d-flex justify-content-between ">
+                <div class="d-flex justify-content-between ">
                     <div class="d-flex align-items-center" style="display: inline-block">
                         <div style="display: inline-block">
                             <img style="width: 30px; height: 30px ;  border-radius: 50%;"
@@ -179,13 +190,105 @@
 
         </section>
     </div>
-<script>
+    <script>
 
-$('.like_button').click(function (){
-    alert(this.id)
-})
+        $('.like_button').click(function () {
+            {#alert(this.id)#}
 
-</script>
+
+            $.ajax({
+                url: "/postLike",
+                data: {
+                    postId: this.id,
+                },
+                method: "POST",
+                success: function (data) {
+                    console.log(data.result)
+                    {#location.replace("/");#}
+                    {#alert(data.postId)#}
+                    if (data.result === 'dislike') {
+                        $('#' + data.postId).html('<i id="unlikehart" class="fa-regular fa-heart"  ></i>')
+                    } else {
+                        $('#' + data.postId).html('<i id="likehart" class="fa-solid fa-heart"  ></i>')
+
+                    }
+                },
+                error: function (request, status, error) {
+                    console.log("error")
+                },
+                complete: function () {
+                    console.log(" 완료ㅏ ")
+
+                }
+            })
+        })
+
+        $(".upload_reply").click(function (e) {
+
+            let postId = (this.id).split("_")
+            comment_content = $('#comment_' + postId[1]).val()
+
+            $.ajax({
+                url: "/commentCreate",
+                data: {
+                    comment_content: comment_content,
+                    postId: postId[1]
+                },
+                method: "POST",
+
+                // 일 부분만 리로딩 하기
+                success: function (data) {
+                    console.log("성공")
+                    $("#reply_list_" + feed_id).append("<div><span><b>" + reply_id + "</b>" + reply_content + "</span></div>")
+                    {#$("#" + reply_id).val('')#}
+
+
+                    {#$('.comment_reply').html(data )#}
+
+                },
+                error: function (request, status, error) {
+                    console.log("error")
+
+                },
+                complete: function () {
+                    console.log(" 완료ㅏ ")
+
+
+                }
+            })
+        })
+
+        $(".delete_comment").click(function (e) {
+
+            let commentId = (this.id).split("_")
+            alert(commentId[1])
+            $.ajax({
+                url: "/commentDelete",
+                data: {
+
+                    commentId: commentId[1]
+                },
+                method: "POST",
+
+                // 일 부분만 리로딩 하기
+                success: function (data) {
+                    console.log("성공")
+
+                },
+                error: function (request, status, error) {
+                    console.log("error")
+
+                },
+                complete: function () {
+                    console.log(" 완료ㅏ ")
+
+
+                }
+            })
+        })
+
+
+    </script>
 
 
 {% endblock %}
