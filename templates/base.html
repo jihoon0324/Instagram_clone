@@ -82,9 +82,7 @@
     <div class="switch_modal_window">
         <div class="modal_title">
 
-
             <ul>
-
 
                 <p>
                     <label><input type="radio" name="account_user" value="A_nickname">A_nickname</label>
@@ -164,6 +162,7 @@
     <!--switch account -->
 
         $("input[type='button']").click(function(){
+
             var radioValue = $("input[name='account_user']:checked").val();
 
             $.ajax({
@@ -188,6 +187,7 @@
         });
 
    $('.switch_account_nav').click(function () {
+
         $('#switch_modal_overlay').css({
             display: 'inline-block',
         })
